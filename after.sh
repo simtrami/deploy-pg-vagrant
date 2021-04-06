@@ -61,7 +61,7 @@ EOF
 echo "-------------------- restarting so that all new config is loaded"
 service postgresql restart
 echo "-------------------- creating postgres $DB_USER role with password $DB_PASSWORD"
-sudo su postgres -c "psql -c \"CREATE ROLE vagrant SUPERUSER LOGIN PASSWORD '$DB_PASSWORD'\" "
+sudo su postgres -c "psql -c \"CREATE ROLE $DB_USER SUPERUSER LOGIN PASSWORD '$DB_PASSWORD'\" "
 echo "-------------------- creating $DB_NAME database"
 sudo su postgres -c "createdb -E UTF8 -T template0 --locale=en_US.utf8 -O $DB_USER $DB_NAME"
 # Tag the provision time:
